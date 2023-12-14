@@ -1,16 +1,37 @@
 # nawy_task
 
-A new Flutter project.
+#### Flutter project built using Uncle bob clean Architecture and Provider for state management
+
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+#### this project supports **Android** and **IOS**
 
-A few resources to get you started if this is your first Flutter project:
+### Running the project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+##### open the terminal and write the following commands
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+ flutter pub get
+```
+```bash
+ flutter run
+```
+#### select the device you want to run into
+
+
+### Build apk
+
+##### open the terminal and write the following command
+
+```bash
+ flutter build apk --release --split-debug-info="./"
+```
+
+
+### Build ipa
+
+##### open the terminal and write the following command
+```bash
+ flutter build ipa --release --split-debug-info="./"
+```
