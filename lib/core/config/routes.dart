@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nawy_task/core/config/page_route_names.dart';
+import 'package:nawy_task/features/search/presentation/pages/result_screen.dart';
 import 'package:nawy_task/features/search/presentation/pages/search_screen.dart';
 
 /// Holds all the routes and provide the projects with needed routes
@@ -10,9 +11,9 @@ class Routes {
       case PageRouteName.initial:
         return MaterialPageRoute<dynamic>(
             builder: (_) => const SearchScreen(), settings: settings);
-      // case PageRouteName.resultListScreen:
-      //   return MaterialPageRoute<dynamic>(
-      //       builder: (_) => const resultListScreen(), settings: settings);
+      case PageRouteName.resultScreen:
+        return MaterialPageRoute<dynamic>(
+            builder: (_) => const ResultScreen(), settings: settings);
       default:
         return MaterialPageRoute<dynamic>(
             builder: (_) => const SearchScreen(), settings: settings);

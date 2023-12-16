@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:nawy_task/features/search/business/entities/compound_entity.dart';
+import 'package:nawy_task/features/search/data/models/compound_model.dart';
 
 import '../../../../core/errors/exceptions.dart';
 import '../../../../core/errors/failure.dart';
@@ -12,7 +12,7 @@ class CompoundRepositoryImpl extends CompoundRepository {
   CompoundRepositoryImpl({required this.compoundDataSource});
 
   @override
-  Future<Either<Failure, List<CompoundEntity>>> getCompounds() async {
+  Future<Either<Failure, List<CompoundModel>>> getCompounds() async {
     try {
       final result = await compoundDataSource.getCompounds();
       return Right(result);

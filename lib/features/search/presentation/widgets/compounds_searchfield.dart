@@ -15,14 +15,14 @@ class CompoundSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     ///theme is an instance from the app theme Data
     final ThemeData theme = Theme.of(context);
-
-    ///mediaQuery is an instance from the app mediaQuery Data
-    final MediaQueryData mediaQuery = MediaQuery.of(context);
-
     return Consumer<SearchProvider>(builder: (context, provider, child) {
-      return SizedBox(
-        width: mediaQuery.size.width * 0.9,
-        child: SearchField<CompoundEntity>(
+      if (provider.loading) {
+        return const LinearProgressIndicator(
+          minHeight: 10,
+        ).setHorizontalPadding(context, 0.02);
+      } else {
+        return SearchField<CompoundEntity>(
+          itemHeight: 50,
           searchStyle: theme.textTheme.bodySmall,
           suggestionStyle: theme.textTheme.bodySmall,
           searchInputDecoration: const InputDecoration(
@@ -52,10 +52,12 @@ class CompoundSearchField extends StatelessWidget {
                 ),
               )
               .toList(),
-          onSuggestionTap: (compound) =>
-              provider.setSelectedCompound(compound.item),
-        ),
-      ).setHorizontalPadding(context, 0.02);
+          onSuggestionTap: (compound) {
+            provider.setSelectedCompound(compound.item);
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+        ).setHorizontalPadding(context, 0.02);
+      }
     });
   }
 }

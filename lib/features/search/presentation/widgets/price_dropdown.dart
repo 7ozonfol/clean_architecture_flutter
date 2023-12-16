@@ -11,25 +11,29 @@ class PriceDropDown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MediaQueryData mediaQuery = MediaQuery.of(context);
     return Consumer<SearchProvider>(builder: (context, provider, child) {
       if (provider.priceList != null) {
-        return SizedBox(
-          width: mediaQuery.size.width * 0.9,
-          child: DropdownButton<int>(
-            isExpanded: true,
-            value: provider.selectedPrice,
-            items: provider.priceList!.priceList.map((int value) {
-              return DropdownMenuItem<int>(
-                value: value,
-                child: Text(value.toString()),
-              );
-            }).toList(),
-            onChanged: provider.setSelectedPrice,
+        return DropdownButton<int>(
+          icon: const Icon(
+            Icons.keyboard_arrow_down_sharp,
+            size: 32,
+            color: Colors.black,
           ),
+          isExpanded: true,
+          value: provider.selectedPrice,
+          items: provider.priceList!.priceList.map((int value) {
+            return DropdownMenuItem<int>(
+              value: value,
+              child: Text(value.toString()),
+            );
+          }).toList(),
+          onChanged: provider.setSelectedPrice,
+        ).setHorizontalPadding(context, 0.04);
+      } else {
+        return const LinearProgressIndicator(
+          minHeight: 10,
         ).setHorizontalPadding(context, 0.02);
       }
-      return const Center(child: CircularProgressIndicator());
     });
   }
 }
